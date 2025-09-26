@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Heart, MessageCircle, Plus, Search, User } from "lucide-react";
-
+import styles from './Header.module.scss'
 export default function Header() {
   const isAuth = false; // mock
   return (
