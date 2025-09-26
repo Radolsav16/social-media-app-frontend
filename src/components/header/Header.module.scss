@@ -1,0 +1,7 @@
+$primary-color: #0070f3;
+.title {
+  color: $primary-color;
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+}
