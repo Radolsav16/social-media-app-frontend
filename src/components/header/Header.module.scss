@@ -1,7 +1,145 @@
-$primary-color: #0070f3;
-.title {
-  color: $primary-color;
-  &:hover {
-    color: darken($primary-color, 10%);
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.header {
+  background-color: $background-color;
+  border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  .header-nav {
+    max-width: 1600px;
+    padding: 1rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+
+    .header-nav-left-section {
+      font-size: 1.8rem;
+      font-weight: 700;
+
+      .header-nav-left-section-link {
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .header-nav-middle-section {
+      flex: 1;
+      max-width: 550px;
+      position: relative;
+
+      .header-nav-middle-section-input {
+        width: 90%;
+        padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        font-size: 0.87rem;
+        background-color: #f9fafb;
+        color: $text-color;
+
+        &:focus {
+          outline: none;
+          background-color: #fff;
+        }
+
+        &::placeholder {
+          color: $muted-color;
+          opacity: 0.9;
+        }
+      }
+
+      svg {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $muted-color;
+        height: 18px;
+      }
+    }
+
+    /* Right icons */
+    .header-nav-right-section {
+      display: flex;
+      gap: 0.75rem;
+
+      .header-nav-right-section-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+        svg {
+          width: 20px;
+          height: 20px;
+          color: $text-color;
+        }
+      }
+      .header-nav-right-section-button-auth-in {
+        background-color: $primary-color;
+        color: $background-color;
+        padding: 0.5rem 0.75rem 0.5rem 1rem;
+        border-radius: $border-radius;
+        border: none;
+        width: 7rem;
+        text-align: center;
+        text-decoration: none;
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
+      .header-nav-right-section-button-auth-up {
+        background-color: $background-color;
+        color: $primary-color;
+        padding: 0.5rem 0.75rem 0.5rem 1rem;
+        border-radius: $border-radius;
+        border: none;
+        width: 7rem;
+        text-decoration: none;
+        text-align: center;
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 795px) {
+  .header {
+    .header-nav {
+      padding: 0.5rem;
+
+      .header-nav-middle-section {
+        display: none;
+      }
+      .header-nav-right-section {
+        gap: 0.5rem;
+
+        .header-nav-right-section-button {
+          padding: 0.25rem;
+
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+    }
   }
 }

@@ -2,44 +2,61 @@
 
 import Link from "next/link";
 import { Heart, MessageCircle, Plus, Search, User } from "lucide-react";
-import styles from './Header.module.scss'
+import s from "./Header.module.scss";
 export default function Header() {
-  const isAuth = false; // mock
+  const isAuth = false; // Mock !!
   return (
-    <header className="header">
-      <nav className="header-nav">
-        <div className="header-nav-left-section">
-          <Link href={"/"} className="header-nav-left-section-link">
+    <header className={s["header"]}>
+      <nav className={s["header-nav"]}>
+        <div className={s["header-nav-left-section"]}>
+          <Link href={"/"} className={s["header-nav-left-section-link"]}>
             Social
           </Link>
         </div>
 
-        <div className="header-nav-middle-section">
-            <div>
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+        <div className={s["header-nav-middle-section"]}>
+          <Search />
           <input
             type="text"
             placeholder="Search..."
-            className="header-nav-middle-section-input"
+            className={s["header-nav-middle-section-input"]}
+            name="search"
           />
-            </div>
-          
         </div>
 
-        <div className="header-nav-right-section">
-          <button>
-            <Heart className="h-5 w-5" />
-          </button>
-          <button>
-            <MessageCircle className="h-5 w-5" />
-          </button>
-          <button>
-            <Plus className="h-5 w-5" />
-          </button>
-          <button>
-            <User className="h-5 w-5" />
-          </button>
-        </div>       
+        <div className={s["header-nav-right-section"]}>
+          {isAuth ? (
+            <>
+              <button className={s["header-nav-right-section-button"]}>
+                <Heart className={s["heart-icon"]} />
+              </button>
+              <button className={s["header-nav-right-section-button"]}>
+                <MessageCircle className={s["message-icon"]} />
+              </button>
+              <button className={s["header-nav-right-section-button"]}>
+                <Plus className={s["plus-icon"]} />
+              </button>
+              <button className={s["header-nav-right-section-button"]}>
+                <User className={s["profile-icon"]} />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                className={s["header-nav-right-section-button-auth-in"]}
+                href={"/sign-in"}
+              >
+                Sign In
+              </Link>
+              <Link
+                className={s["header-nav-right-section-button-auth-up"]}
+                href={"/sign-up"}
+              >
+                Sign up
+              </Link>
+            </>
+          )}
+        </div>
       </nav>
     </header>
   );
