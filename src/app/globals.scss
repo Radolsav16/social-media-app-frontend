@@ -1,3 +1,10 @@
+$fonts:Arial, Helvetica, sans-serif;
+
+
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $fonts;
+  margin: 0;
+  padding: 0;
 }
+
