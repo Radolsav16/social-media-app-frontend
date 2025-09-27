@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import './globals.scss'
+import './App.scss'
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+import Sidebar from "@/components/sidebar/Sidebar";
 
 
 export const metadata: Metadata = {
@@ -16,7 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
+        <Header />
+        <Sidebar />
         {children}
+        <Footer />
       </body>
     </html>
   );
