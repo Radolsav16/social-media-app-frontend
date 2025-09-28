@@ -1,0 +1,100 @@
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+}
+
+.postCard {
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+
+    .authorInfo {
+      display: flex;
+      flex-direction: column;
+
+      .author {
+        font-weight: 600;
+        color: $text-color;
+      }
+
+      .username {
+        font-size: 0.85rem;
+        color: $muted-color;
+      }
+    }
+  }
+
+  .content {
+    font-size: 0.95rem;
+    color: $text-color;
+    line-height: 1.4;
+  }
+
+  .postImage {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+    object-fit: cover;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 0.5rem;
+    border-top: 1px solid $border-color;
+
+    button {
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      color: $muted-color;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .feed {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .postCard {
+    .header .avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.features {
+  background: $background-color;
+  padding: 3rem 1rem;
+  text-align: center;
+
+  .heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: $text-color;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon {
+      background: $primary-color;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $text-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      color: $muted-color;
+      line-height: 1.4;
+    }
+  }
+}
