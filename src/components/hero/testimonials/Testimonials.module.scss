@@ -1,0 +1,87 @@
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.testimonials {
+  background: $background-color;
+  padding: 3rem 1rem;
+  text-align: center;
+
+  .heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: $text-color;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: 1.5rem;
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .userInfo {
+        display: flex;
+        flex-direction: column;
+
+        .name {
+          font-weight: 600;
+          color: $text-color;
+        }
+
+        .username {
+          font-size: 0.85rem;
+          color: $muted-color;
+        }
+      }
+    }
+
+    .quote {
+      font-size: 1rem;
+      color: $muted-color;
+      font-style: italic;
+      line-height: 1.5;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .card .quote {
+    font-size: 0.95rem;
+  }
+}
