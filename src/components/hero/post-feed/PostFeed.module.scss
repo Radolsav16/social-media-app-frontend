@@ -6,12 +6,13 @@ $border-color: #e5e7eb;
 $border-radius: 0.5rem;
 
 .feed {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 3 columns
   gap: 1.5rem;
-  max-width: 600px;
-  width: 100%;
+  max-width: 1200px; // adjust container width
   margin: auto;
+  width: 100%;
+  padding: 5rem;
 }
 
 .postCard {
@@ -84,10 +85,16 @@ $border-radius: 0.5rem;
   }
 }
 
-/* Mobile */
+/* Mobile & Tablet Responsive */
+@media (max-width: 1024px) {
+  .feed {
+    grid-template-columns: repeat(2, 1fr); // 2 columns on tablet
+  }
+}
+
 @media (max-width: 768px) {
   .feed {
-    max-width: 100%;
+    grid-template-columns: 1fr; // single column on mobile
     padding: 0 0.5rem;
   }
 
