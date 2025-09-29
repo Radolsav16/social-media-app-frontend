@@ -1,0 +1,230 @@
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.postPage {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* Main Post Card */
+.postCard {
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: 1rem;
+  margin-bottom: 2rem; // spacing before suggested section
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .authorInfo {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.8rem;
+
+      .name {
+        font-weight: 600;
+        color: $text-color;
+      }
+
+      .username {
+        font-size: 0.85rem;
+        color: $muted-color;
+      }
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .followBtn {
+      background-color: $primary-color;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: $border-radius;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .content {
+    font-size: 1rem;
+    color: $text-color;
+    line-height: 1.5;
+  }
+
+  .postImage {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+    object-fit: cover;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid $border-color;
+    padding-top: 0.5rem;
+
+    button {
+      background: none;
+      border: none;
+      color: $muted-color;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .comments {
+    margin-top: 1rem;
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .comment {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      .commentUser {
+        font-weight: 600;
+        color: $text-color;
+      }
+
+      .commentText {
+        color: $muted-color;
+      }
+    }
+
+    .addComment {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+
+      input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        font-size: 0.9rem;
+      }
+
+      button {
+        background-color: $primary-color;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: $border-radius;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+/* Suggested Section */
+.suggested {
+  margin-top: 1rem;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $text-color;
+  }
+
+  .suggestedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .suggestedCard {
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 0.8rem;
+
+      .author {
+        font-weight: 600;
+        color: $text-color;
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: $muted-color;
+      }
+    }
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .postPage {
+    padding: 1rem;
+  }
+
+  .postCard {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .postImage {
+      max-height: 300px;
+      object-fit: cover;
+    }
+  }
+
+  .suggestedGrid {
+    grid-template-columns: 1fr; // stack in one column on small screens
+  }
+}
