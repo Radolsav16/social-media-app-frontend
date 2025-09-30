@@ -1,7 +1,13 @@
 "use client";
 
 import PostFeed from "../hero/post-feed/PostFeed";
+import SavedPosts from "../post/saved-posts/SavedPosts";
 import Sidebar from "../sidebar/Sidebar";
+import Activity from "./activity/Activity";
+import EditProfileModal from "./edit-profile/EditProfile";
+import FriendList from "./friends-list/FriendsList";
+import GroupsJoined from "./groups-joined/GroupsJoined";
+import ProfileTabs from "./profile-tabs/ProfileTabs";
 import styles from "./Profile.module.scss";
 
 export default function Profile() {
@@ -29,6 +35,9 @@ export default function Profile() {
             </p>
           </div>
         </div>
+         {/* <EditProfileModal isOpen={true} onClose={() => console.log('click')} /> */}
+
+        <ProfileTabs />
 
         {/* Add Post Component */}
         <div className={styles.addPost}>
@@ -36,6 +45,10 @@ export default function Profile() {
           <button>Post</button>
         </div>
 
+        <FriendList />
+        <SavedPosts />
+        <Activity />
+        <GroupsJoined />
           <div className={styles.feed}>
           {[1, 2, 3, 4, 5].map((post) => (
             <div key={post} className={styles.postCard}>

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import s from "./Sidebar.module.scss";
 import Image from "next/image";
+import EventsMeetups from "../community/EventsMeetups";
 
 export default function Sidebar() {
   const isAuth = true;
@@ -50,6 +51,7 @@ export default function Sidebar() {
       </div>
 
       <div className={s["sidebar-bottom"]}>
+            <EventsMeetups />
         {isAuth && (
           <div className={s["user-profile"]}>
             <Image
@@ -64,6 +66,8 @@ export default function Sidebar() {
           </div>
         )}
       </div>
+
+  
     </aside>
   );
 }

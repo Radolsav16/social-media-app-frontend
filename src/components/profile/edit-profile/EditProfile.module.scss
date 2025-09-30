@@ -1,0 +1,105 @@
+$primary-color: #1d4ed8;
+$background-color: #fff;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: $background-color;
+  padding: 2rem;
+  border-radius: $border-radius;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.heading {
+  margin-bottom: 1rem;
+  color: $text-color;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $muted-color;
+
+    .previewImage {
+  margin-top: 0.5rem;
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+}
+
+    input,
+    textarea {
+      margin-top: 0.3rem;
+      padding: 0.6rem;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      font-size: 0.9rem;
+      color: $text-color;
+      background: #f9fafb;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        background: #fff;
+      }
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  .cancel {
+    background: #e5e7eb;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: $border-radius;
+    cursor: pointer;
+    &:hover {
+      background: #d1d5db;
+    }
+  }
+
+  .save {
+    background: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-weight: 600;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
