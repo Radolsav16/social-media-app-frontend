@@ -1,0 +1,65 @@
+$primary-color: #1d4ed8;
+$background-color: #fff;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.friendList {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: $background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .friendCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid $primary-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $text-color;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .friendList {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .friendCard .avatar {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

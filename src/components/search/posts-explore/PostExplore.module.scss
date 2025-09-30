@@ -1,0 +1,100 @@
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+
+.explore {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text-color;
+  }
+
+  .subtitle {
+    color: $muted-color;
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .postImage {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .content {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+        color: $text-color;
+      }
+
+      .username {
+        font-size: 0.85rem;
+        color: $muted-color;
+      }
+
+      p {
+        margin: 0.5rem 0 1rem;
+        font-size: 0.95rem;
+        color: $text-color;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          background: none;
+          border: none;
+          font-size: 0.9rem;
+          color: $muted-color;
+          cursor: pointer;
+          transition: color 0.2s;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .explore {
+    padding: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

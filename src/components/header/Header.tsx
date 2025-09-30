@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { Heart, MessageCircle, Plus, Search, User } from "lucide-react";
 import s from "./Header.module.scss";
+import NotificationDropdown from "../notifiactions/NotificationsDropdown";
 export default function Header() {
-  const isAuth = false; // Mock !!
+  const isAuth = true; // Mock !!
   return (
     <header className={s["header"]}>
       <nav className={s["header-nav"]}>
@@ -39,6 +40,7 @@ export default function Header() {
               <button className={s["header-nav-right-section-button"]}>
                 <User className={s["profile-icon"]} />
               </button>
+              <NotificationDropdown />
             </>
           ) : (
             <>
