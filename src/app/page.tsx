@@ -9,10 +9,10 @@ import SuggestedCommunities from "@/components/hero/suggested-communities/Sugges
 
 export default function Home() {
   return (
-    // <Hero />
+    <Hero />
     // <Profile />
     // <Search 
-    <Post />
+    // <Post />
     // <SuggestedCommunities />
     // <FollowSuggestions />
   );

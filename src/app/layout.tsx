@@ -3,8 +3,7 @@ import './App.scss'
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import Sidebar from "@/components/sidebar/Sidebar";
-
-
+import { StoreProvider } from "@/store/Provider";
 export const metadata: Metadata = {
   title: "Social Media App",
   description: "Best Social Media App",
@@ -19,9 +18,11 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        <Header />
-        {children}
-        <Footer />
+        <StoreProvider>
+          <Header />
+          {children}
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );
