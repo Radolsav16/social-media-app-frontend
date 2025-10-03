@@ -1,21 +1,8 @@
 import Hero from "@/components/hero/Hero";
-import Search from "./search/page";
-import Post from "./post/page";
-import FollowSuggestions from "@/components/search/follow-suggestions/FollowSuggestions";
-import SuggestedCommunities from "@/components/hero/suggested-communities/SuggestedCommunities";
-
-
-
+import { fetchHomePage } from "./api/home";
 export default async function Home() {
-  const res = await fetch('http://localhost:3050/api/social-media-app/home',{
-    cache:'no-store'
-  });
-  const data = await res.json();
+  const data = await fetchHomePage()
   return (
     <Hero {...data}/>
-    // <Search 
-    // <Post />
-    // <SuggestedCommunities />
-    // <FollowSuggestions />
   );
 }

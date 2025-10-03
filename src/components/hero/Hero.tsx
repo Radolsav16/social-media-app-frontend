@@ -6,16 +6,17 @@ import Testimonials from "./testimonials/Testimonials";
 import Sidebar from "../sidebar/Sidebar";
 import HeroSection from "./HeroSection";
 import React from "react";
+import { HomeTypes } from "@/features/home/types/home.types";
 
 interface HeroProps {
   title: string;
   subTitle: string;
   buttonsTexts: ["Get Started", "Log in"];
-  features: any;
+  features: HomeTypes.Feature[];
   suggestedUsers: any;
-  testimonials: any;
-  trendingTopics: any;
-  callToAction: any;
+  testimonials: HomeTypes.Testimonial[];
+  trendingTopics: string[];
+  callToAction: HomeTypes.CallToAction;
 }
 
 const Hero: React.FC<HeroProps> = ({
@@ -34,11 +35,16 @@ const Hero: React.FC<HeroProps> = ({
         title={title}
         subTitle={subTitle}
         buttonsTexts={buttonsTexts}
+        trendingTopics={trendingTopics}
+        suggestedUsers={suggestedUsers}
       />
       {/* <PostFeed /> */}
       <Features features={features}/>
-      <CallToActionBanner  callToAction={callToAction}/>
+      <CallToActionBanner {...callToAction}/>
       <Testimonials testimonials={testimonials} />
     </>
   );
 };
+
+
+export default Hero;
