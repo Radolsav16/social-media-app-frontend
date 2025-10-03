@@ -1,5 +1,4 @@
 import Hero from "@/components/hero/Hero";
-import Profile from "@/components/profile/Profile";
 import Search from "./search/page";
 import Post from "./post/page";
 import FollowSuggestions from "@/components/search/follow-suggestions/FollowSuggestions";
@@ -7,10 +6,13 @@ import SuggestedCommunities from "@/components/hero/suggested-communities/Sugges
 
 
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('http://localhost:3050/api/social-media-app/home',{
+    cache:'no-store'
+  });
+  const data = await res.json();
   return (
-    <Hero />
-    // <Profile />
+    <Hero {...data}/>
     // <Search 
     // <Post />
     // <SuggestedCommunities />

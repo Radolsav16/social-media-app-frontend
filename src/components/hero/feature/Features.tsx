@@ -1,9 +1,12 @@
 "use client";
 
-import styles from "./Features.module.scss";
+import s from "./Features.module.scss";
 import { Users, MessageCircle, Share2, Shield } from "lucide-react";
 
 export default function Features() {
+  // const iconMap = {
+  //   ''
+  // };
   const features = [
     {
       id: 1,
@@ -32,14 +35,14 @@ export default function Features() {
   ];
 
   return (
-    <section className={styles.features}>
-      <h2 className={styles.heading}>Why Join Our Community?</h2>
-      <div className={styles.grid}>
+    <section className={s.features}>
+      <h2 className={s.heading}>Why Join Our Community?</h2>
+      <div className={s.grid}>
         {features.map((feature) => (
-          <div key={feature.id} className={styles.card}>
-            <div className={styles.icon}>{feature.icon}</div>
-            <h3 className={styles.title}>{feature.title}</h3>
-            <p className={styles.description}>{feature.description}</p>
+          <div key={feature.id} className={s.card}>
+            <div className={s.icon}>{feature.icon}</div>
+            <h3 className={s.title}>{feature.title}</h3>
+            <p className={s.description}>{feature.description}</p>
           </div>
         ))}
       </div>
