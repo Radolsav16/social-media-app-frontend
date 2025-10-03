@@ -1,8 +1,15 @@
 "use client";
 
+import React from "react";
 import s from "./Testimonials.module.scss";
+import { HomeTypes } from "@/features/home/types/home.types";
 
-export default function Testimonials({testimonials}) {
+
+interface TestimonialsProps{
+    testimonials: HomeTypes.Testimonial[];
+}
+
+const Testimonials:React.FC<TestimonialsProps> = ({testimonials}) =>  {
   return (
     <section className={s.testimonials}>
       <h2 className={s.heading}>What Our Users Say</h2>
@@ -23,3 +30,6 @@ export default function Testimonials({testimonials}) {
     </section>
   );
 }
+
+
+export default Testimonials;

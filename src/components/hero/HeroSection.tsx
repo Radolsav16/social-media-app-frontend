@@ -2,15 +2,20 @@ import Link from "next/link";
 import s from "./Hero.module.scss";
 import Trending from "./trending/Trending";
 import React from "react";
+import { HomeTypes } from "@/features/home/types/home.types";
+
 
 
 interface HeroSectionProps {
     title:string,
     subTitle:string,
     buttonsTexts:["Get Started","Log in"];
+    trendingTopics:string[]
+    suggestedUsers:HomeTypes.SuggestedUser[]
+    
 }
 
-const HeroSection:React.FC<HeroSectionProps> = ({title,subTitle,buttonsTexts}) => {
+const HeroSection:React.FC<HeroSectionProps> = ({title,subTitle,buttonsTexts,trendingTopics,suggestedUsers}) => {
 
       const btnMap = {
         "Get Started": (
@@ -35,7 +40,7 @@ const HeroSection:React.FC<HeroSectionProps> = ({title,subTitle,buttonsTexts}) =
                   {buttonsTexts.map((text) => btnMap[text])}
                 </div>
               </div>
-              <Trending />
+              <Trending trendingTopics={trendingTopics} suggestedUsers={suggestedUsers} />
             </section>
           </main>)
 }

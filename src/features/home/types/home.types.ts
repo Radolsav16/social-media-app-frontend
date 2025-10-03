@@ -1,5 +1,5 @@
 export  namespace HomeTypes {
-  interface SuggestedUser {
+  export interface SuggestedUser {
     id: string;
     name: string;
     avatar: string;
@@ -17,7 +17,7 @@ export  namespace HomeTypes {
   export interface CallToAction {
     heading: string;
     text: string;
-    buttons: string[];
+     buttons:['Sign in','Sign up']
   }
 
   // Testimonial card
