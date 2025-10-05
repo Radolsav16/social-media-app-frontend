@@ -5,7 +5,7 @@ import { Heart, MessageCircle, Plus, Search, User } from "lucide-react";
 import s from "./Header.module.scss";
 import NotificationDropdown from "../notifiactions/NotificationsDropdown";
 export default function Header() {
-  const isAuth = true; // Mock !!
+  const isAuth = false; // Mock !!
   return (
     <header className={s["header"]}>
       <nav className={s["header-nav"]}>
