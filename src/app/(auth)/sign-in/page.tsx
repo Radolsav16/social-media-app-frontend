@@ -26,7 +26,7 @@ export default function SignIn() {
 
         <p className={styles.switch}>
           Don’t have an account?{" "}
-          <Link href="/signup" className={styles.link}>
+          <Link href="/sign-up" className={styles.link}>
             Sign Up
           </Link>
         </p>

@@ -1,6 +1,6 @@
 "use client"
 import { combineReducers } from "@reduxjs/toolkit";
-// import homeReducer from '@/features/home/slice/home.slice'
+import authReducer from '@/features/auth/slice/authSlice'
 export const rootReducer = combineReducers({
-    // home:homeReducer
+    auth:authReducer
 })

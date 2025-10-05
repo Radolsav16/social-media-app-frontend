@@ -4,6 +4,8 @@ $text-color: #111827;
 $muted-color: #6b7280;
 $border-color: #e5e7eb;
 $border-radius: 0.5rem;
+$form-error-color: #ef4444;
+$form-error-font-size: 0.875rem;
 
 .signupPage {
   display: flex;
@@ -78,6 +80,12 @@ $border-radius: 0.5rem;
           opacity: 0.9;
         }
       }
+    }
+    .error {
+      color: $form-error-color;
+      font-size: $form-error-font-size;
+      margin-top: 0.25rem;
+      font-weight: 500;
     }
 
     .switch {
