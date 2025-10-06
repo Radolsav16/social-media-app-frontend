@@ -5,16 +5,14 @@ import axios from "axios";
 import { RootState } from "@reduxjs/toolkit/query";
 
 export const signUpUser = createAsyncThunk("auth/sign-up",async (data)=>{
-    try {
     const res = await axios.post(BASE_URL + '/auth/sign-up',data);
-    console.log(res);
-    return res
-    } catch (error) {
-        console.log(error)
-    }
-   
+    return res.data
 })
 
+export const signInUser = createAsyncThunk("auth/sign-in",async(data) => {
+    const res = await axios.post(BASE_URL + '/auth/sign-in',data);
+    return res.data;
+})
 
 const initialState:AuthState = {
     user:null,
@@ -32,15 +30,34 @@ const authSlice = createSlice({
         builder
             .addCase(signUpUser.pending,(state)=>{
                 state.loading = true;
+                state.error = null;
             })
             .addCase(signUpUser.fulfilled,(state,action)=>{
-                console.log('here!')
                 state.accessToken = action.payload.accessToken;
                 state.user = action.payload.user
                 state.isAuthenticated = true;
+                state.error = null;
             })
             .addCase(signUpUser.rejected,(state,action)=>{
-                console.log(action.payload,'action payload error')
+                state.error = {message:action.payload}
+                state.loading = false;
+            })
+
+            .addCase(signInUser.pending,(state)=>{
+                state.loading = true;
+                state.error = null
+            })
+
+            .addCase(signInUser.fulfilled,(state,action)=>{
+                state.loading = false;
+                state.accessToken = action.payload.accessToken;
+                state.user = action.payload.user;
+                state.error = null
+                state.isAuthenticated = true;
+            })
+
+            .addCase(signInUser.rejected,(state,action) =>{
+                state.loading = false;
                 state.error = {message:action.payload}
             })
     }
@@ -52,9 +69,11 @@ const authSlice = createSlice({
 
 
 export const authSelectors = {
-    isAuthenticated:(state:RootState) => {
-        console.log(state.auth,'state auth')
-    }
+    isAuthenticated:((state:RootState) => state.auth.isAuthenticated),
+    accessToken:((state:RootState) => state.auth.isAuthenticated),
+    isLoading:((state:RootState) => state.auth.loading),
+    user:((state:RootState) =>state.auth.user),
+    error:((state:RootState) => state.auth.error)
 }
 
 

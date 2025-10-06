@@ -1,16 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./SignUp.module.scss";
+import s from "./SignUp.module.scss";
 import z from "zod";
 import { useAppDispatch } from "@/store/hooks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpUser } from "@/features/auth/slice/authSlice";
-// import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
-
-
+import { useRouter } from "next/navigation";
 export default function SignUp() {
+  const router = useRouter();
   const signUpSchema = z.object({
     name:z.string().min(1,'Please enter name!'),
     email:z.string().email('Please enter valid email!'),
@@ -24,40 +23,41 @@ export default function SignUp() {
   })
   const onSubmit = (data) => {
    dispatch(signUpUser(data))
+    router.push('/')
   }
   return (
-    <main className={styles.signupPage}>
-      <div className={styles.card}>
-        <h1 className={styles.title}>Create Account</h1>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.inputGroup}>
+    <main className={s.signupPage}>
+      <div className={s.card}>
+        <h1 className={s.title}>Create Account</h1>
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={s.inputGroup}>
             <label htmlFor="name">Name</label>
             <input {...register("name")} type="text" id="name" placeholder="Enter your name" />
-              {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+              {errors.name && <p className={s.error}>{errors.name.message}</p>}
           </div>
 
-          <div className={styles.inputGroup}>
+          <div className={s.inputGroup}>
             <label htmlFor="email">Email</label>
             <input 
               {...register("email")}
             type="email" id="email" placeholder="Enter your email" />
-              {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+              {errors.email && <p className={s.error}>{errors.email.message}</p>}
           </div>
 
-          <div className={styles.inputGroup}>
+          <div className={s.inputGroup}>
             <label htmlFor="password">Password</label>
             <input {...register("password")} type="password" id="password" placeholder="Create a password"  />
-              {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+              {errors.password && <p className={s.error}>{errors.password.message}</p>}
           </div>
 
-          <button type="submit" className={styles.btnPrimary} disabled={isSubmitting}>
+          <button type="submit" className={s.btnPrimary} disabled={isSubmitting}>
             Sign Up
           </button>
         </form>
 
-        <p className={styles.switch}>
+        <p className={s.switch}>
           Already have an account?{" "}
-          <Link href="/sign-in" className={styles.link}>
+          <Link href="/sign-in" className={s.link}>
             Sign In
           </Link>
         </p>
