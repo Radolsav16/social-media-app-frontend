@@ -6,8 +6,8 @@ import { rootReducer } from "./rootReducer";
 export const makeStore =  () => {
     return configureStore({
         reducer:{
-        ...rootReducer,
-    },
+         rootReducer,
+        },
    
     middleware:(getDefaultMiddleware) => 
         getDefaultMiddleware().concat()

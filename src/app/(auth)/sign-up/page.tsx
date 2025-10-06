@@ -6,6 +6,7 @@ import z from "zod";
 import { useAppDispatch } from "@/store/hooks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpUser } from "@/features/auth/slice/authSlice";
 // import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 
 
@@ -21,10 +22,8 @@ export default function SignUp() {
   const {register,handleSubmit,formState:{errors,isSubmitting}} = useForm<SignUpFormData>({
     resolver:zodResolver(signUpSchema)
   })
-
   const onSubmit = (data) => {
-    // await dispatch(signUpUser(data))
-    console.log(data)
+   dispatch(signUpUser(data))
   }
   return (
     <main className={styles.signupPage}>
