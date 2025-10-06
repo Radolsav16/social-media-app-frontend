@@ -5,12 +5,9 @@ import { rootReducer } from "./rootReducer";
 
 export const makeStore =  () => {
     return configureStore({
-        reducer:{
-         rootReducer,
-        },
-   
-    middleware:(getDefaultMiddleware) => 
-        getDefaultMiddleware().concat()
+        reducer:rootReducer,
+        middleware:(getDefaultMiddleware) => 
+            getDefaultMiddleware().concat()
     })
     
 }
