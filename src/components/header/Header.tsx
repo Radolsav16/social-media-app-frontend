@@ -4,8 +4,11 @@ import Link from "next/link";
 import { Heart, MessageCircle, Plus, Search, User } from "lucide-react";
 import s from "./Header.module.scss";
 import NotificationDropdown from "../notifiactions/NotificationsDropdown";
+import { useSignUp } from "@/features/auth/hooks/useSignUp";
 export default function Header() {
-  const isAuth = false; // Mock !!
+  // const isAuth = false; // Mock !!
+  const { isAuthenticated } = useSignUp()
+  console.log(isAuthenticated,'is Auth')
   return (
     <header className={s["header"]}>
       <nav className={s["header-nav"]}>
@@ -26,7 +29,7 @@ export default function Header() {
         </div>
 
         <div className={s["header-nav-right-section"]}>
-          {isAuth ? (
+          {isAuthenticated ? (
             <>
               <button className={s["header-nav-right-section-button"]}>
                 <Heart className={s["heart-icon"]} />
