@@ -1,11 +1,9 @@
-import { BASE_URL } from "../constants"
+import api from "@/lib/axios"
 
 export const fetchHomePage = async () => {
     try {
-        const res = await fetch(BASE_URL + '/home',{
-        cache:'no-cache'
-        })
-        return await res.json()
+        const res = await api.get('/home')
+        return await res.data;
     } catch (error) {
         console.log(error)
     }

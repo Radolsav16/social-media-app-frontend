@@ -24,7 +24,7 @@ const Features:React.FC<FeaturesProps> = ({features}) => {
       <div className={s.grid}>
         {features.map((feature) => (
           <div key={feature.id} className={s.card}>
-            <div className={s.icon}>{feature.icon}</div>
+            <div className={s.icon}>{iconMap[feature.icon]}</div>
             <h3 className={s.title}>{feature.title}</h3>
             <p className={s.description}>{feature.description}</p>
           </div>
