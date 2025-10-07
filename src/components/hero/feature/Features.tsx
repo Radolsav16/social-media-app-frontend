@@ -3,7 +3,7 @@
 import React from "react";
 import s from "./Features.module.scss";
 import { Users, MessageCircle, Share2, Shield } from "lucide-react";
-import { HomeTypes } from "@/features/home/types/home.types";
+import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
 
 
 interface FeaturesProps{

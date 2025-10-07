@@ -1,6 +1,6 @@
 "use client";
 
-import { HomeTypes } from "@/features/home/types/home.types";
+import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
 import s from "./Trending.module.scss";
 import React from "react";
 
