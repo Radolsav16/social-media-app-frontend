@@ -2,7 +2,7 @@
 
 import React from "react";
 import s from "./Testimonials.module.scss";
-import { HomeTypes } from "@/features/home/types/home.types";
+import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
 
 
 interface TestimonialsProps{

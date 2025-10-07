@@ -2,7 +2,7 @@ import Link from "next/link";
 import s from "./Hero.module.scss";
 import Trending from "./trending/Trending";
 import React from "react";
-import { HomeTypes } from "@/features/home/types/home.types";
+import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
 
 
 

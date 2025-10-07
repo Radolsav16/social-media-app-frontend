@@ -1,8 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-
+console.log(process.env.NEXT_PUBLIC_BASE_URL)
 const api = axios.create({
-    baseURL:'http://localhost:3050/api/social-media-app',
+    baseURL:process.env.NEXT_PUBLIC_BASE_URL,
 })
 
 api.interceptors.response.use((response) => {

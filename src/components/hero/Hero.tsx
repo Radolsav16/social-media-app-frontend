@@ -6,7 +6,7 @@ import Testimonials from "./testimonials/Testimonials";
 import Sidebar from "../sidebar/Sidebar";
 import HeroSection from "./HeroSection";
 import React from "react";
-import { HomeTypes } from "@/features/home/types/home.types";
+import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
 
 interface HeroProps {
   title: string;
