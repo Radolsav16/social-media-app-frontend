@@ -1,17 +1,24 @@
-import { BASE_URL } from "@/app/constants";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AuthState } from "../types/auth.types";
 import axios from "axios";
 import { RootState } from "@reduxjs/toolkit/query";
+import { setAccessTokenInfo } from "@/utils/auth";
+import api from "@/lib/axios";
 
 export const signUpUser = createAsyncThunk("auth/sign-up",async (data)=>{
-    const res = await axios.post(BASE_URL + '/auth/sign-up',data);
+    const res = await api.post('/auth/sign-up',data,{showSuccessToast:true})
+    console.log(res,'res')
+    setAccessTokenInfo({accessToken:res.data.accessToken})
     return res.data
 })
 
 export const signInUser = createAsyncThunk("auth/sign-in",async(data) => {
-    const res = await axios.post(BASE_URL + '/auth/sign-in',data);
+    try {
+    const res = await api.post('/auth/sign-in',data);
     return res.data;
+    } catch (error) {
+        console.log()
+    }
 })
 
 const initialState:AuthState = {
@@ -39,6 +46,7 @@ const authSlice = createSlice({
                 state.error = null;
             })
             .addCase(signUpUser.rejected,(state,action)=>{
+                console.log(action)
                 state.error = {message:action.payload}
                 state.loading = false;
             })

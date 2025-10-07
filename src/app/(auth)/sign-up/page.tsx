@@ -18,12 +18,21 @@ export default function SignUp() {
 
   type SignUpFormData = z.infer<typeof signUpSchema>
   const dispatch = useAppDispatch();
-  const {register,handleSubmit,formState:{errors,isSubmitting}} = useForm<SignUpFormData>({
-    resolver:zodResolver(signUpSchema)
+  const {register,handleSubmit,formState:{errors,isSubmitting},setValue} = useForm<SignUpFormData>({
+    resolver:zodResolver(signUpSchema),
+    mode:"onSubmit",
+    reValidateMode:'onChange',
+    defaultValues:{name:'',email:'',password:''}
+    
   })
-  const onSubmit = (data) => {
-   dispatch(signUpUser(data))
-    router.push('/')
+  const onSubmit = async (data) => {
+    try {
+      const result = await dispatch(signUpUser(data))
+      if(result.payload){
+        router.push('/')
+      }
+    } catch (err) {
+    }
   }
   return (
     <main className={s.signupPage}>
