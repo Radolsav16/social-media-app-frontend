@@ -1,7 +1,9 @@
-"use client"
 
+import s from './Loading.module.scss'
 export default function Loading(){
     return(
-        <h1>Loading!</h1>
+       <div className={s.overlay}>
+      <div className={s.loader}></div>
+    </div>
     )
 }
