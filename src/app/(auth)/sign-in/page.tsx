@@ -2,28 +2,11 @@
 
 import Link from "next/link";
 import s from "./SignIn.module.scss";
-import z from "zod";
-import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/store/hooks";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { signInUser } from "@/features/auth/slice/authSlice";
+import useSignIn from "@/features/auth/hooks/useSignIn";
+
 
 export default function SignIn() {
-   const router = useRouter();
-   const signInSchema = z.object({
-    email:z.string().email('Please enter valid email!'),
-    password:z.string().min(8,'Password should be at least 8 characters')
-   })
-   type SignInFormData = z.infer<typeof signInSchema>
-   const dispatch = useAppDispatch();
-   const {register,handleSubmit,formState:{errors,isSubmitting}} = useForm<SignInFormData>({
-    resolver:zodResolver(signInSchema)
-   })
-   const onSubmit = (data:SignInFormData) => {
-    dispatch(signInUser(data));
-    router.push('/')
-   }
+   const {handleSubmit,register,errors,isSubmitting,onSubmit} = useSignIn()
   return (
          <main className={s.signinPage}>
       <div className={s.card}>

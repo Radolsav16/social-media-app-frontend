@@ -32,6 +32,7 @@ const useSignUp = () => {
         router.push('/')
       }
     } catch (err) {
+      router.push('sign-up')
     }
   }
 
