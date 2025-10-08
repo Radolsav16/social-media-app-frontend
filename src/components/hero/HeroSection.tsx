@@ -21,12 +21,12 @@ const HeroSection:React.FC<HeroSectionProps> = ({title,subTitle,buttonsTexts,tre
       const user = useAppSelector(authSelectors.user);
       const btnMap = {
         "Get Started": (
-          <Link href="/sign-up" className={s.btnPrimary}>
+          <Link href="/sign-up" className={s.btnPrimary} key={'sign-up'}>
             Get Started
           </Link>
         ),
         "Log in": (
-          <Link href="/sign-in" className={s.btnSecondary}>
+          <Link href="/sign-in" className={s.btnSecondary} key={'sign-in'}>
             Sign In
           </Link>
         ),
