@@ -30,18 +30,18 @@ export default function Header() {
         <div className={s["header-nav-right-section"]}>
           {isAuthenticated ? (
             <>
-              <button className={s["header-nav-right-section-button"]}>
+              <Link className={s["header-nav-right-section-button"]} href={'/likes'}>
                 <Heart className={s["heart-icon"]} />
-              </button>
-              <button className={s["header-nav-right-section-button"]}>
+              </Link>
+              <Link className={s["header-nav-right-section-button"]} href={'/messages'}>
                 <MessageCircle className={s["message-icon"]} />
-              </button>
-              <button className={s["header-nav-right-section-button"]}>
+              </Link>
+              <Link className={s["header-nav-right-section-button"]} href={'/'}>
                 <Plus className={s["plus-icon"]} />
-              </button>
-              <button className={s["header-nav-right-section-button"]}>
+              </Link>
+              <Link className={s["header-nav-right-section-button"]} href={'/profile'}>
                 <User className={s["profile-icon"]} />
-              </button>
+              </Link>
               <NotificationDropdown />
             </>
           ) : (
