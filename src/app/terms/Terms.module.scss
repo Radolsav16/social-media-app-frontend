@@ -1,0 +1,51 @@
+// Variables (reuse your design system)
+$primary-color: #1d4ed8;
+$background-color: #f3f4f6;
+$text-color: #111827;
+$muted-color: #6b7280;
+$border-color: #e5e7eb;
+$border-radius: 0.5rem;
+$form-error-color: #ef4444;
+$form-error-font-size: 0.875rem;
+
+.container {
+  background-color: $background-color;
+  color: $text-color;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    h1 {
+  font-size: 2rem;
+  color: $primary-color;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: $text-color;
+  margin-bottom: 0.5rem;
+}
+
+}
+
+
+.section {
+  margin-bottom: 1.5rem;
+
+  p {
+    font-size: 1rem;
+    color: $muted-color;
+    line-height: 1.6;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
