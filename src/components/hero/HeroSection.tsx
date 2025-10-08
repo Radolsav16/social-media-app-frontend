@@ -3,6 +3,8 @@ import s from "./Hero.module.scss";
 import Trending from "./trending/Trending";
 import React from "react";
 import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
+import { useAppSelector } from "@/store/hooks";
+import { authSelectors } from "@/features/auth/slice/authSlice";
 
 
 
@@ -16,16 +18,16 @@ interface HeroSectionProps {
 }
 
 const HeroSection:React.FC<HeroSectionProps> = ({title,subTitle,buttonsTexts,trendingTopics,suggestedUsers}) => {
-
+      const user = useAppSelector(authSelectors.user);
       const btnMap = {
         "Get Started": (
-          <Link href="/signup" className={s.btnPrimary}>
+          <Link href="/sign-up" className={s.btnPrimary}>
             Get Started
           </Link>
         ),
         "Log in": (
-          <Link href="/login" className={s.btnSecondary}>
-            Log In
+          <Link href="/sign-in" className={s.btnSecondary}>
+            Sign In
           </Link>
         ),
       };
@@ -34,13 +36,13 @@ const HeroSection:React.FC<HeroSectionProps> = ({title,subTitle,buttonsTexts,tre
     <main className={s.home}>
             <section className={s.hero}>
               <div className={s["hero-content"]}>
-                <h1>{title}</h1>
-                <p>{subTitle}</p>
+                {user ? <h1>Welcome, {user.name || user.email} 👋</h1> : <><h1>{title}</h1><p>{subTitle}</p></>}
+                {!user &&
                 <div className={s["hero-buttons"]}>
                   {buttonsTexts.map((text) => btnMap[text])}
-                </div>
+                </div>}
               </div>
-              <Trending trendingTopics={trendingTopics} suggestedUsers={suggestedUsers} />
+            <Trending trendingTopics={trendingTopics} suggestedUsers={suggestedUsers} user={!!user} />
             </section>
           </main>)
 }

@@ -1,9 +1,7 @@
 "use client";
-import PostFeed from "./post-feed/PostFeed";
 import Features from "./feature/Features";
 import CallToActionBanner from "./call-to-action/CallToAction";
 import Testimonials from "./testimonials/Testimonials";
-import Sidebar from "../sidebar/Sidebar";
 import HeroSection from "./HeroSection";
 import React from "react";
 import { HomeTypes } from "@/features/home-ui/types/homeUi.types";
@@ -38,7 +36,6 @@ const Hero: React.FC<HeroProps> = ({
         trendingTopics={trendingTopics}
         suggestedUsers={suggestedUsers}
       />
-      {/* <PostFeed /> */}
       <Features features={features}/>
       <CallToActionBanner {...callToAction}/>
       <Testimonials testimonials={testimonials} />

@@ -11,12 +11,9 @@ export const signUpUser = createAsyncThunk("auth/sign-up",async (data)=>{
 })
 
 export const signInUser = createAsyncThunk("auth/sign-in",async(data) => {
-    try {
     const res = await api.post('/auth/sign-in',data);
+    setAccessTokenInfo({accessToken:res.data.accessToken})
     return res.data;
-    } catch (error) {
-        console.log()
-    }
 })
 
 const initialState:AuthState = {
@@ -37,10 +34,8 @@ const authSlice = createSlice({
                 state.isAuthenticated = true;
             })
             .addCase(signInUser.fulfilled,(state,action)=>{
-                state.loading = false;
                 state.accessToken = action.payload.accessToken;
                 state.user = action.payload.user;
-                state.error = null
                 state.isAuthenticated = true;
             })
     }
