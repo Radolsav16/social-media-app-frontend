@@ -1,8 +1,15 @@
+import { getAcessToken } from "@/utils/auth";
 import axios from "axios";
 import { toast } from "react-toastify";
 console.log(process.env.NEXT_PUBLIC_BASE_URL)
 const api = axios.create({
     baseURL:process.env.NEXT_PUBLIC_BASE_URL,
+})
+
+api.interceptors.response.use((request)=>{
+    const token = getAcessToken();
+    if(token) request.headers.Authorization = token;
+    return request; 
 })
 
 api.interceptors.response.use((response) => {

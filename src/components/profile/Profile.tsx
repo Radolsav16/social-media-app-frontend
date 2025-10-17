@@ -1,5 +1,6 @@
 "use client";
 
+import { useAppSelector } from "@/store/hooks";
 import PostFeed from "../hero/post-feed/PostFeed";
 import SavedPosts from "../post/saved-posts/SavedPosts";
 import Sidebar from "../sidebar/Sidebar";
@@ -9,8 +10,12 @@ import FriendList from "./friends-list/FriendsList";
 import GroupsJoined from "./groups-joined/GroupsJoined";
 import ProfileTabs from "./profile-tabs/ProfileTabs";
 import styles from "./Profile.module.scss";
+import { authSelectors } from "@/features/auth/slice/authSlice";
+import { useState } from "react";
 
 export default function Profile() {
+  const user = useAppSelector(authSelectors.user);
+  const [showEditModal,setShowEditModal] = useState<boolean>(false)
   return (
     <div className={styles.profilePage}>
       <Sidebar />
@@ -27,15 +32,17 @@ export default function Profile() {
               alt="User Avatar"
               className={styles.avatar}
             />
-            <h2 className={styles.name}>John Doe</h2>
-            <p className={styles.username}>@johndoe</p>
+            <button onClick={() => setShowEditModal(!showEditModal)} className={styles.editButton}>Edit profile</button>
+            <h2 className={styles.name}>{user?.name ?? 'John'}</h2>
+            <p className={styles.username}>{user?.email ?? 'emal@gmail.com'}</p>
+            
             <p className={styles.bio}>
               Web developer, tech enthusiast, coffee lover. Sharing thoughts and
               ideas every day.
             </p>
           </div>
         </div>
-         {/* <EditProfileModal isOpen={true} onClose={() => console.log('click')} /> */}
+         {showEditModal && <EditProfileModal isOpen={true} onClose={() => console.log('click')} />}
 
         <ProfileTabs />
 
