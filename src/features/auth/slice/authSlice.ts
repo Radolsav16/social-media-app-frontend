@@ -1,18 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AuthState } from "../types/auth.types";
 import { RootState } from "@reduxjs/toolkit/query";
-import { setAccessTokenInfo } from "@/utils/auth";
+import { setLoacalStorageInfo } from "@/utils/auth";
 import api from "@/lib/axios";
 
 export const signUpUser = createAsyncThunk("auth/sign-up",async (data)=>{
     const res = await api.post('/auth/sign-up',data,{showSuccessToast:true})
-    setAccessTokenInfo({accessToken:res.data.accessToken})
+    setLoacalStorageInfo({accessToken:res.data.accessToken,userId:res.data.user.id})
     return res.data
 })
 
 export const signInUser = createAsyncThunk("auth/sign-in",async(data) => {
-    const res = await api.post('/auth/sign-in',data);
-    setAccessTokenInfo({accessToken:res.data.accessToken})
+    const res = await api.post('/auth/sign-in',data,{showSuccessToast:true});
+    setLoacalStorageInfo({accessToken:res.data.accessToken,userId:res.data.user.id})
+    return res.data;
+})
+
+export const fetchUserData = createAsyncThunk('auth/fetchUserData',async({credentials}) => {
+    const res = await api.get('auth/user-data',credentials)
     return res.data;
 })
 
@@ -30,13 +35,14 @@ const authSlice = createSlice({
         builder
             .addCase(signUpUser.fulfilled,(state,action)=>{
                 state.accessToken = action.payload.accessToken;
-                state.user = action.payload.user
                 state.isAuthenticated = true;
             })
             .addCase(signInUser.fulfilled,(state,action)=>{
                 state.accessToken = action.payload.accessToken;
-                state.user = action.payload.user;
                 state.isAuthenticated = true;
+            })
+            .addCase(fetchUserData.fulfilled,(state,action)=>{
+                state.user = action.payload
             })
     }
 
